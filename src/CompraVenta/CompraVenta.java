@@ -1,146 +1,161 @@
 package CompraVenta;
 
 
+import javax.swing.*;
+import java.io.IOException;
+
 public class CompraVenta {
     int alto = 20;
     int largo = 15;
-    String[][] tabla = new String[alto][largo];
+    int sleep = 150;
+    int veces = 5;
+    int duracion = 5;
+    String[][] tablaF = new String[alto][largo];
+    String[][] tabla1 = new String[alto][largo];
+    String[][] tabla2 = new String[alto][largo];
 
 
-    void limpiar() { //quitar esta pendejadota en un futuro, solo jala con bash
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
+    public static void clearScreen() {
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {}
     }
+
+//    void clearScreen() { //quitar esta pendejadota en un futuro, solo jala con bash
+//        for (int i = 0; i < 50; i++) {
+//            System.out.println();
+//        }
+//    }
 
      void tablaFull() {
 
-        for (int i = 0; i < alto; i++) {
-            for (int j = 0; j < largo; j++) {
+        for (int i = 0; i < tablaF.length; i++) {
+            for (int j = 0; j < tablaF[1].length; j++) {
 
                 if (i == 0 || i == (alto - 1)) {
-                    tabla[i][j] = "*";
+                    tablaF[i][j] = "*";
                 } else if (j == 0 || j == (largo - 1)) {
-                    tabla[i][j] = "*";
+                    tablaF[i][j] = "*";
                 } else {
-                    tabla[i][j] = " ";
+                    tablaF[i][j] = " ";
                 }
+                System.out.print(tablaF[i][j] + " ");
 
             }
+            System.out.println();
         }
     }
 
     void tablaHash() {
 
-        for (int i = 0; i < tabla.length; i++) {
-            for (int j = 0; j < tabla[1].length; j++) {
+        for (int i = 0; i < tabla1.length; i++) {
+            for (int j = 0; j < tabla1[1].length; j++) {
 
                 if (i == 0 || i == (alto - 1)) {
                     if (j % 2 != 0) {
-                        tabla[i][j] = "*";
+                        tabla1[i][j] = "*";
                     } else {
-                        tabla[i][j] = " ";
+                        tabla1[i][j] = " ";
                     }
 
                 } else if (j == 0 || j == (largo - 1)) {
                     if (i % 2 != 0) {
-                        tabla[i][j] = "*";
+                        tabla1[i][j] = "*";
                     } else {
-                        tabla[i][j] = " ";
+                        tabla1[i][j] = " ";
                     }
                 } else {
-                        tabla[i][j] = " ";
+                        tabla1[i][j] = " ";
                 }
-            }
-        }
-    }
+                System.out.print(tabla1[i][j] + " ");
 
-    void tablaHash2() {
-
-        for (int i = 0; i < tabla.length; i++) {
-            for (int j = 0; j < tabla[1].length; j++) {
-
-                if (i == 0 || i == (alto - 1)) {
-                    if (j % 2 == 0) {
-                        tabla[i][j] = "*";
-                    } else {
-                        tabla[i][j] = " ";
-                    }
-
-                } else if (j == 0 || j == (largo - 1)) {
-                    if (i % 2 == 0) {
-                        tabla[i][j] = "*";
-                    } else {
-                        tabla[i][j] = " ";
-                    }
-                } else {
-                    tabla[i][j] = " ";
-                }
-            }
-        }
-    }
-
-    void printTabla() {
-
-        for (int i = 0; i < tabla.length; i++) {
-            for (int j = 0; j < tabla[1].length; j++) {
-                System.out.print(tabla[i][j] + " ");
             }
             System.out.println();
         }
     }
 
+    void tablaHash2() {
+
+        for (int i = 0; i < tabla2.length; i++) {
+            for (int j = 0; j < tabla2[1].length; j++) {
+
+                if (i == 0 || i == (alto - 1)) {
+                    if (j % 2 == 0) {
+                        tabla2[i][j] = "*";
+                    } else {
+                        tabla2[i][j] = " ";
+                    }
+
+                } else if (j == 0 || j == (largo - 1)) {
+                    if (i % 2 == 0) {
+                        tabla2[i][j] = "*";
+                    } else {
+                        tabla2[i][j] = " ";
+                    }
+                } else {
+                    tabla2[i][j] = " ";
+                }
+                System.out.print(tabla2[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+    void print1(int veces, int sleep) throws InterruptedException {
+
+        while (veces != 0) {
+            this.tablaHash();
+            Thread.sleep(sleep);
+            clearScreen();
+            this.tablaHash2();
+            Thread.sleep(sleep);
+            clearScreen();
+            veces--;
+        }
+    }
+
+    void print2(int veces, int sleep) throws InterruptedException {
+
+        while (veces != 0) {
+            this.tablaHash2();
+            Thread.sleep(sleep);
+            clearScreen();
+            this.tablaHash();
+            Thread.sleep(sleep);
+            clearScreen();
+            veces--;
+        }
+    }
+
+    void printIntermedio() throws InterruptedException {
+
+        for (int i = 0; i < 3; i++) {
+            clearScreen();
+            Thread.sleep(450);
+            this.tablaFull();
+            Thread.sleep(450);
+        }
+    }
+
+    void start() throws InterruptedException {
+
+        while (duracion != 0 ) {
+            print1(veces, sleep);
+            printIntermedio();
+            print2(veces, duracion);
+            duracion--;
+        }
+    }
+
     public static void main(String[] args) throws InterruptedException {
         CompraVenta tabla = new CompraVenta();
-        tabla.tablaFull();
-        CompraVenta tabla1 = new CompraVenta();
-        tabla1.tablaHash();
-        CompraVenta tabla2 = new CompraVenta();
-        tabla2.tablaHash2();
+        tabla.start();
 
-        int sleep = 130;
 
-        int start = 5;
-        int contador = 15;
-
-        while (start != 0) {
-            while (contador != 0) {
-                tabla.limpiar();
-                tabla.printTabla();
-                Thread.sleep(sleep);
-                tabla.limpiar();
-                tabla2.printTabla();
-                Thread.sleep(sleep);
-                tabla.limpiar();
-                tabla1.printTabla();
-                Thread.sleep(sleep);
-                tabla.limpiar();
-                tabla.printTabla();
-                Thread.sleep(sleep);
-                contador--;
-            }
-            for (int i = 0; i < 3; i++) {
-                tabla.limpiar();
-                Thread.sleep(sleep);
-                tabla.printTabla();
-                Thread.sleep(sleep);
-            }
-
-            contador = 15;
-            while (contador != 0) {
-                tabla.limpiar();
-                tabla1.printTabla();
-                Thread.sleep(sleep);
-                tabla.limpiar();
-                tabla2.printTabla();
-                Thread.sleep(sleep);
-                tabla.limpiar();
-                tabla.printTabla();
-                Thread.sleep(sleep);
-                contador--;
-            }
-            start--;
-        }
 
     }
 

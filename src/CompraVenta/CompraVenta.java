@@ -7,7 +7,7 @@ public class CompraVenta {
     String[][] tabla = new String[alto][largo];
 
 
-    void limpiar() {
+    void limpiar() { //quitar esta pendejadota en un futuro, solo jala con bash
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }

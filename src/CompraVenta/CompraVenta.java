@@ -10,6 +10,7 @@ public class CompraVenta {
     int sleep = 150;
     int veces = 5;
     int duracion = 5;
+
     String[][] tablaF = new String[alto][largo];
     String[][] tabla1 = new String[alto][largo];
     String[][] tabla2 = new String[alto][largo];
@@ -41,6 +42,9 @@ public class CompraVenta {
                     tablaF[i][j] = "*";
                 } else {
                     tablaF[i][j] = " ";
+                    if (j < largo) {
+                        tablaF[alto / 2][j] = "-";
+                    }
                 }
                 System.out.print(tablaF[i][j] + " ");
 
@@ -59,6 +63,9 @@ public class CompraVenta {
                         tabla1[i][j] = "*";
                     } else {
                         tabla1[i][j] = " ";
+                        if (j < largo-1 && j > 0) {
+                            tabla1[alto / 2][j] = "-";
+                        }
                     }
 
                 } else if (j == 0 || j == (largo - 1)) {
@@ -66,9 +73,15 @@ public class CompraVenta {
                         tabla1[i][j] = "*";
                     } else {
                         tabla1[i][j] = " ";
+                        if (j < largo-1 && j > 0) {
+                            tabla1[alto / 2][j] = "-";
+                        }
                     }
                 } else {
                         tabla1[i][j] = " ";
+                    if (j < largo-1 && j > 0) {
+                        tabla1[alto / 2][j] = "-";
+                    }
                 }
                 System.out.print(tabla1[i][j] + " ");
 
@@ -87,6 +100,9 @@ public class CompraVenta {
                         tabla2[i][j] = "*";
                     } else {
                         tabla2[i][j] = " ";
+                        if (j < largo-1 && j > 0) {
+                            tabla2[alto / 2][j] = "-";
+                        }
                     }
 
                 } else if (j == 0 || j == (largo - 1)) {
@@ -94,9 +110,15 @@ public class CompraVenta {
                         tabla2[i][j] = "*";
                     } else {
                         tabla2[i][j] = " ";
+                        if (j < largo-1 && j > 0) {
+                            tabla2[alto / 2][j] = "-";
+                        }
                     }
                 } else {
                     tabla2[i][j] = " ";
+                    if (j < largo - 1 && j > 0) {
+                        tabla2[alto / 2][j] = "-";
+                    }
                 }
                 System.out.print(tabla2[i][j] + " ");
             }

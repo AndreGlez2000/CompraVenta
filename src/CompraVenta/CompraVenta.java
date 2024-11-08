@@ -5,8 +5,8 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class CompraVenta {
-    int alto = 20;
-    int largo = 15;
+    int alto = 30;
+    int largo = 20;
     int sleep = 150;
     int veces = 5;
     int duracion = 5;
@@ -43,7 +43,7 @@ public class CompraVenta {
                 } else {
                     tablaF[i][j] = " ";
                     if (j < largo) {
-                        tablaF[alto / 2][j] = "-";
+                        tablaF[alto / 2][j] = "*";
                     }
                 }
                 System.out.print(tablaF[i][j] + " ");
@@ -64,7 +64,7 @@ public class CompraVenta {
                     } else {
                         tabla1[i][j] = " ";
                         if (j < largo-1 && j > 0) {
-                            tabla1[alto / 2][j] = "-";
+                            tabla1[alto / 2][j] = "*";
                         }
                     }
 
@@ -74,13 +74,13 @@ public class CompraVenta {
                     } else {
                         tabla1[i][j] = " ";
                         if (j < largo-1 && j > 0) {
-                            tabla1[alto / 2][j] = "-";
+                            tabla1[alto / 2][j] = "*";
                         }
                     }
                 } else {
                         tabla1[i][j] = " ";
                     if (j < largo-1 && j > 0) {
-                        tabla1[alto / 2][j] = "-";
+                        tabla1[alto / 2][j] = "*";
                     }
                 }
                 System.out.print(tabla1[i][j] + " ");
@@ -101,7 +101,7 @@ public class CompraVenta {
                     } else {
                         tabla2[i][j] = " ";
                         if (j < largo-1 && j > 0) {
-                            tabla2[alto / 2][j] = "-";
+                            tabla2[alto / 2][j] = "*";
                         }
                     }
 
@@ -111,13 +111,13 @@ public class CompraVenta {
                     } else {
                         tabla2[i][j] = " ";
                         if (j < largo-1 && j > 0) {
-                            tabla2[alto / 2][j] = "-";
+                            tabla2[alto / 2][j] = "*";
                         }
                     }
                 } else {
                     tabla2[i][j] = " ";
                     if (j < largo - 1 && j > 0) {
-                        tabla2[alto / 2][j] = "-";
+                        tabla2[alto / 2][j] = "*";
                     }
                 }
                 System.out.print(tabla2[i][j] + " ");
